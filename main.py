@@ -1,8 +1,14 @@
 import pygame
 from constants import *
 
+FPS = 60.0
+
 def main() -> None:
     pygame.init()
+
+    clock = pygame.time.Clock()
+    dt = 0
+
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     
     while True:
@@ -10,8 +16,10 @@ def main() -> None:
             if event.type == pygame.QUIT:
                 return
 
-        screen.fill(pygame.Color(0, 0, 0,))
+        screen.fill("black")
         pygame.display.flip()
+        
+        dt = clock.tick(FPS) / 1000
 
 
 if __name__ == "__main__":
