@@ -3,6 +3,7 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from sys import exit
 
 FPS = 60.0
 
@@ -34,6 +35,11 @@ def main() -> None:
             obj.update(dt)
         
         screen.fill("black")
+
+        for asteroid in asteroids:
+            if asteroid.collides_with(player):
+                print("Game Over!")
+                exit()
         
         for obj in drawable:
             obj.draw(screen)
